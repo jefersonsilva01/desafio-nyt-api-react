@@ -5,11 +5,11 @@ import styled from "styled-components";
 const Form = styled.form`
   width: max-content;
   margin: 0 auto;
-  padding-top: 16px; 
+  padding: 16px 0;  
 `,
 
   Input = styled.input`
-    width: 70vw;
+    width: 60vw;
     height: 36px;
     padding-left: 16px;
     border: 1.5px solid #000;
@@ -51,18 +51,21 @@ const Form = styled.form`
       handleChange = e => setSearch(e.target.value);
 
     return (
-      <Form>
-        <Input
-          value={search}
-          onChange={e => handleChange(e)}
-          type="text"
-          placeholder="Search" />
+      <>
+        <Form>
+          <Input
+            value={search}
+            onChange={e => handleChange(e)}
+            type="text"
+            placeholder="Search" />
 
-        {search
-          ? <Button to={"/search-results"} search={search}>Search</Button>
-          : <Span>Search</Span>
-        }
-      </Form>
+          {search
+            ? <Button to={"/search-results"} search={search}>Search</Button>
+            : <Span>Search</Span>
+          }
+        </Form>
+        <hr style={{ border: "1.5px solid #000" }} />
+      </>
     )
   }
 

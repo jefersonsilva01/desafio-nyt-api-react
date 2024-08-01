@@ -2,28 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Image = styled.img`
-  width: 30%;
+const MenuList = styled.ul`
+  display: flex;
+  width: max-content;
+  list-style: none;
 `,
 
-  Button = styled(Link)`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `,
-
-  MenuList = styled.ul`
-    display: flex;
-    list-style: none;
-    width: 35%;
-    margin: 32px auto 16px;
-    justify-content: space-around;
-  `,
-
   ListItem = styled.li`
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 500;
+    color: #fff;
+    margin: 0 0 0 16px;
 
     &:hover {
       color: #d00;
@@ -36,12 +25,28 @@ const Image = styled.img`
     color: unset;
   `,
 
-  Nav = () => {
+  FooterItem = styled.footer`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    padding: 0 32px;
+    background-color: #000;
+  `,
+
+  Image = styled.img`
+    width: 200px;
+  `,
+
+  Footer = () => {
     return (
-      <nav>
-        <Button to={"/"}>
-          <Image src="./assets/nytimes-logo.png" alt="logo" />
-        </Button>
+      <FooterItem>
+        <Link to={"https://developer.nytimes.com/"} target="_blank">
+          <Image src="./assets/poweredby_nytimes_200c.png" alt="logo" />
+        </Link>
         <MenuList>
           <ListItem>
             <ItemLink to={"/trends"}>
@@ -61,8 +66,8 @@ const Image = styled.img`
             </ItemLink>
           </ListItem>
         </MenuList>
-      </nav>
+      </FooterItem>
     )
   }
 
-export default Nav;
+export default Footer;
