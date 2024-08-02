@@ -29,8 +29,6 @@ const NewsLink = styled(Link)`
         .catch(error => console.log(error))
     }, []);
 
-    console.log(trendNews);
-
     return (
       <>
         <h1 style={
