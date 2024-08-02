@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import InputSearch from "./InputSerach";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const NewsLink = styled(Link)`
     display: flex;
@@ -19,24 +18,32 @@ const NewsLink = styled(Link)`
     }
   `,
 
-  Home = (props) => {
-    const [lastNews, setLastNews] = useState(null),
+  Shared = () => {
+    const [sharedNews, setSharedNews] = useState(null),
       API_URL = process.env.REACT_APP_API_URL,
       API_KEY = process.env.REACT_APP_API_KEY;
 
     useEffect(() => {
-      axios.get(`${API_URL}/svc/news/v3/content/all/all.json?api-key=${API_KEY}`)
-        .then(response => setLastNews(response.data.results))
+      axios.get(`${API_URL}/svc/mostpopular/v2/emailed/7.json?api-key=${API_KEY}`)
+        .then(response => setSharedNews(response.data.results))
         .catch(error => console.log(error))
     }, []);
 
+    console.log(sharedNews);
+
     return (
       <>
-        <InputSearch {...props} />
+        <h1 style={
+          {
+            textAlign: "center",
+            fontSize: "2.5em",
+            padding: "32px 0",
+          }
+        }>Shared</h1>
         <hr style={{ border: "1.5px solid #000" }} />
         <div id="news" style={{ paddingBottom: "132px" }}>
-          {lastNews
-            ? lastNews.map((news, index) => {
+          {sharedNews
+            ? sharedNews.map((news, index) => {
               return (
                 <NewsLink key={index} to={news.url} target="_blank">
                   {
@@ -66,4 +73,4 @@ const NewsLink = styled(Link)`
     )
   }
 
-export default Home;
+export default Shared;

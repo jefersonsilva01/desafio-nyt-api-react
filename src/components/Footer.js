@@ -29,12 +29,12 @@ const MenuList = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: static;
-    bottom: 0;
     width: 100%;
     height: 100px;
     padding: 0 32px;
     background-color: #000;
+    position: absolute;
+    bottom: 0;
   `,
 
   Image = styled.img`
